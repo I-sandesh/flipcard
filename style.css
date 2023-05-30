@@ -16,16 +16,17 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(rgb(132, 73, 234), #79787b);
+  flex-direction: column-reverse;
+  gap: 20px;
 }
 
 .game-grid{
-
     display: grid;
     grid-template-columns: repeat(var(--l), 1fr);
     grid-template-rows: repeat(var(--l), 1fr);
     gap: 10px;
     width: 90vmin;
-    height: 95vmin;
+    height: 85vmin;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 25px 45px rgba(5, 20, 229, 0.1);
     backdrop-filter: blur(10px);
@@ -62,6 +63,37 @@
 }
 .cell.open{
   transform: rotateY(0deg);
+}
+
+.info{
+  width: 90vmin;
+}
+
+.info .game-move{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.info .game-move .screen1{
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 45px rgba(5, 20, 229, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 9px;
+  color: white;
+  border-radius: 15px;
+  font-size: larger;
+}
+
+.info .game-move .screen2{
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 45px rgba(5, 20, 229, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 9px;
+  color: white;
+  border-radius: 15px;
+  font-size: larger;
 }
 
 @keyframes rotFirstinit{

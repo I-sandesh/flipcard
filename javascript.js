@@ -2,11 +2,9 @@ let level = 4;
 let score = 0;
 let time = 60;
 let move = 0;
-
+let gameStarted = false;
 let selectedCell = null;
-
-
-
+let matched = 0;
 
 const IMAGES = [
     "https://picsum.photos/id/102/4320/3240","https://picsum.photos/id/103/2592/1936","https://picsum.photos/id/104/3840/2160","https://picsum.photos/id/106/2592/1728","https://picsum.photos/id/107/5000/3333",
@@ -51,10 +49,19 @@ function initGame(){
     }
     CELLS.sort(()=>0.5-Math.random());
     CELLS.forEach(cell => gameGrid.appendChild(cell));
+    const sandesh = setInterval(() => {
+        if(gameStarted) time--;
+        if(time<=0){
+            clearInterval(sandesh);
+            gameStarted = false;
+        }
+        document.querySelector(".time").innerHTML = time;
+    },1000);
 }
-initGame();
+
 
 function handleCellClick(){
+    gameStarted = true;
     if(!this.classList.contains('open')){
         if(selectedCell == null){
             selectedCell = this;
@@ -63,6 +70,7 @@ function handleCellClick(){
             if(selectedCell.getAttribute('data-id') == this.getAttribute('data-id')){
                 this.classList.add('open');
                 selectedCell = null;
+                matched += 2;
             }else{
                 this.classList.add('open');
                 setTimeout(()=>{
@@ -73,6 +81,11 @@ function handleCellClick(){
             }
         }
         move++;
-        
+        document.querySelector(".move").innerHTML = move;
+        if(matched==level*level){
+            gameStarted = false;
+        }
     }
 }
+
+addEventListener("load",initGame)
