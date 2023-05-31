@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flip Card Game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <section class="game-page">
-        <div class="game-grid">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Home Page -->
+    <section class="home-page">
+      <div class="home-grid">
+        <div class="home-grid-item">
+          <h1>Flip Card Game</h1>
+          <p>Click on the cards to find the matching pairs</p>
+          <!-- Select The Lavel OF game from radio button -->
 
-        </div>
-        <div class="info">
-            <div class="game-move">
-                <div class="screen1">
-                    <span class="txt">Move : </span>
-                    <span class="move">0</span>
-                </div>
-                <div class="screen2">
-                    <span class="tym">Time : </span>
-                    <span class="time">60</span>
-                </div>
-
+          <div class="level">
+            <div>
+              <input type="radio" name="level" id="easy" value="4"  />
+              <label for="easy">Noob</label>
             </div>
+            <div>
+              <input type="radio" name="level" id="medium" value="6" />
+              <label for="medium">Pro</label>
+            </div>
+            <div>
+              <input type="radio" name="level" id="hard" value="8" />
+              <label for="hard">Legend</label>
+            </div>
+            <div>
+                <input type="radio" name="level" id="god" value="10" />
+                <label for="god">God</label>
+              </div>
+          </div>
+          <button class="start-btn">Start Game</button>
         </div>
+      </div>
+    </section>
+
+    <!-- Game Page -->
+    <section class="game-page hide">
+      <div class="game-grid"></div>
+      <div class="info">
+        <div class="game-move">
+          <div class="screen1">
+            <span class="txt">Move : </span>
+            <span class="move">0</span>
+          </div>
+          <div class="screen2">
+            <span class="tym">Time : </span>
+            <span class="time">60</span>
+          </div>
+        </div>
+      </div>
     </section>
     <script src="javascript.js"></script>
-</body>
+  </body>
 </html>

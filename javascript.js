@@ -84,8 +84,22 @@ function handleCellClick(){
         document.querySelector(".move").innerHTML = move;
         if(matched==level*level){
             gameStarted = false;
+            
         }
     }
 }
 
-addEventListener("load",initGame)
+addEventListener("load",initGame);
+
+document.querySelector(".start-btn").addEventListener("click",()=>{
+    document.querySelector(".home-page").style.display = "none";
+    document.querySelector(".game-page").style.display = "flex";
+    level = document.querySelector("input[name='level']:checked").value || 4;
+    score = 0;
+    time = 60;
+    move = 0;
+    gameStarted = false;
+    selectedCell = null;
+    matched = 0;
+    initGame();
+})
