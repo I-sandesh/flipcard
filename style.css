@@ -1,15 +1,18 @@
 /* Global */
 
-* {
+*, *::before, *::after, html, body, *:focus {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   --l: 3;
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Game Page */
 
-.game-page , .home-page {
+.game-page , .home-page, .over-page {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -18,6 +21,8 @@
   background: linear-gradient(rgb(132, 73, 234), #79787b);
   flex-direction: column-reverse;
   gap: 20px;
+  overflow: hidden;
+  padding-inline: 10px;
 }
 
 .game-grid{
@@ -109,40 +114,59 @@
 .hide{
   display: none;
 }
-.home-grid-item{
+.home-grid, .over-grid{
+  width: 95vmin;
+  font-size: 1.5em;
+  padding: 0rem;
+}
+.home-grid-item, .over-grid-item{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
   flex-direction: column;
   color: #fff;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 25px 45px rgba(5, 20, 229, 0.1);
+  box-shadow: 0 0px 55px rgba(164, 197, 207, 0.3);
   backdrop-filter: blur(10px);
-  padding: 2rem;
+  padding: 1rem;
 }
-.home-grid-item h1{
-  font-size: 2em;
+.home-grid-item h1, .over-grid-item h1{
+  font-size: 1.3em;
+}
+.home-grid-item p{
+  font-size: 0.6em;
+}
+.home-grid-item:hover, .over-grid-item:hover{
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+.home-grid-item h2, .over-grid-item h2{
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-top: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .level{
-  font-size: 2rem;
   font-weight: 700;
-  text-transform: uppercase;
-  margin: 1rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1vmax;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 .level div{
-  font-size: 1.5rem;
   font-weight: 400;
   text-transform: uppercase;
-  margin-bottom: 1rem;
   color: #fff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.1s;
 }
 
 .level div input[type="radio"]{
@@ -150,9 +174,8 @@
 }
 .level div input[type="radio"] + label{
   display: inline-block;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   border-radius: 10px;
-  font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
@@ -169,7 +192,7 @@
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
-.start-btn{
+.start-btn, .restart-btn{
   background: #fff;
   color: #000;
   padding: 0.5rem 1rem;
@@ -178,14 +201,16 @@
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.1s;
   margin-top: 1rem;
   border: none;
   transition: 300ms;
 }
-.start-btn:focus{
+.start-btn:hover, .restart-btn:hover , .start-btn:focus, .level div:hover{
   transform: scale(0.8);
 }
 .start-btn:hover{
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
+
+

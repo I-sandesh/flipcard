@@ -54,11 +54,20 @@ function initGame(){
         if(time<=0){
             clearInterval(sandesh);
             gameStarted = false;
+            score = time*level*level/move;
+            gameOver();
         }
         document.querySelector(".time").innerHTML = time;
     },1000);
 }
 
+function gameOver(){
+    document.querySelector(".game-page").classList.add("hide");
+    document.querySelector(".over-page").classList.remove("hide");
+    document.querySelector(".final-score").innerHTML = `${level*level} * ${time} / ${move} = ${score.toFixed(2)}`;
+    document.querySelector(".final-move").innerHTML = move;
+    document.querySelector(".final-time-left").innerHTML = time;
+}
 
 function handleCellClick(){
     gameStarted = true;
@@ -84,6 +93,8 @@ function handleCellClick(){
         document.querySelector(".move").innerHTML = move;
         if(matched==level*level){
             gameStarted = false;
+            score = time*level*level/move;
+            gameOver();
             
         }
     }
@@ -91,9 +102,10 @@ function handleCellClick(){
 
 addEventListener("load",initGame);
 
+
 document.querySelector(".start-btn").addEventListener("click",()=>{
-    document.querySelector(".home-page").style.display = "none";
-    document.querySelector(".game-page").style.display = "flex";
+    document.querySelector(".home-page").classList.add("hide");
+    document.querySelector(".game-page").classList.remove("hide");
     level = document.querySelector("input[name='level']:checked").value || 4;
     score = 0;
     time = 60;
@@ -103,3 +115,17 @@ document.querySelector(".start-btn").addEventListener("click",()=>{
     matched = 0;
     initGame();
 })
+
+document.querySelector(".restart-btn").addEventListener("click",()=>{
+    document.querySelector(".over-page").classList.add("hide");
+    document.querySelector(".game-page").classList.remove("hide");
+    level = document.querySelector("input[name='level']:checked").value || 4;
+    score = 0;
+    time = 60;
+    move = 0;
+    gameStarted = false;
+    selectedCell = null;
+    matched = 0;
+    initGame();
+})
+
