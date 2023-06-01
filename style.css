@@ -5,8 +5,6 @@
   padding: 0;
   box-sizing: border-box;
   --l: 3;
-  outline: none;
-  user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -48,7 +46,7 @@
   box-sizing: inherit;
   transition: 1s;
   transform-style: preserve-3d;
-  animation: rotFirstinit 3s linear 1;
+  animation: rotFirstinit 5s linear 1;
 }
 
 .cell img{

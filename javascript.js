@@ -24,7 +24,7 @@ function initGame(){
     IMAGES.sort(()=>0.5 - Math.random());
     gameGrid.style = `--l: ${level}`
     var CELLS = [];
-
+    gameGrid.innerHTML = "";
     for(var i=0;i<level*level/2;i++){
         const cell = document.createElement('div');
         const cell2 = document.createElement('div');
@@ -54,7 +54,6 @@ function initGame(){
         if(time<=0){
             clearInterval(sandesh);
             gameStarted = false;
-            score = time*level*level/move;
             gameOver();
         }
         document.querySelector(".time").innerHTML = time;
@@ -64,7 +63,9 @@ function initGame(){
 function gameOver(){
     document.querySelector(".game-page").classList.add("hide");
     document.querySelector(".over-page").classList.remove("hide");
-    document.querySelector(".final-score").innerHTML = `${level*level} * ${time} / ${move} = ${score.toFixed(2)}`;
+    score = level*level*(time+1)/move;
+    score = score*100/(level*level*60/1);
+    document.querySelector(".final-score").innerHTML = `${level*level} * ${time+1} / ${move} = ${score.toFixed(2)}`;
     document.querySelector(".final-move").innerHTML = move;
     document.querySelector(".final-time-left").innerHTML = time;
 }
@@ -113,6 +114,7 @@ document.querySelector(".start-btn").addEventListener("click",()=>{
     gameStarted = false;
     selectedCell = null;
     matched = 0;
+
     initGame();
 })
 
